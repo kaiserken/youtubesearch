@@ -5,9 +5,8 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
-const API_KEY = 'AIzaSyCu8ySDCn0PaFXTAv70TdljI6mtPDlBfjk';
+import API_KEY from  '../config';
 
-//YTSearch({key: API_KEY, term: 'surfboards'}, function(data){console.log(data);});
 
 class App extends Component{
   constructor(props){
@@ -32,6 +31,7 @@ class App extends Component{
   }
 
   render(){
+    // prevents search from running immediately after each letter  - basically allows some typing before firing
     const videoSearch = _.debounce((term) => { this.videoSearch(term); }, 500);
 
     return (
