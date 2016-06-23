@@ -16,7 +16,7 @@
   color: white;
 }
 body {
-  padding-bottom: 25px;
+  padding: 10px;
 }
 .video-list {
   background-color: #293032;
@@ -38,7 +38,7 @@ body {
 .video-detail .details {
   margin-top: 10px;
   padding: 10px;
-  
+
   border-radius: 4px;
   background-color: #293032;
   color: white;
