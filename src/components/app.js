@@ -14,20 +14,7 @@ export default class App extends Component{
   constructor(props){
     super(props);
 
-
-
-    this.props.videoSearch('surfboards');
-
-  }
-
-  renderVideoDetail(){
-    console.log("selected video from render", this.props.selectedVideo);
-    if (this.props.selectedVideo === undefined || this.props.selectedVideo === null){
-      return;
-    } else {
-      console.log(this.props.selectedVideo)
-      return <VideoDetail video = {this.props.selectedVideo}/>;
-    }
+    this.props.videoSearch('funny dogs');
 
   }
 
@@ -42,7 +29,7 @@ export default class App extends Component{
           <h1 className ="display-3">YouTube Search</h1>
         </div>
         <SearchBar onSearchTermChange={videoSearch} />
-        {this.renderVideoDetail()}
+        <VideoDetail video = {this.props.selectedVideo}/>
         <VideoList
           onVideoSelect= {this.props.videoSelect}
           videos = {this.props.videos}
@@ -52,12 +39,13 @@ export default class App extends Component{
   }
 }
 
-
+// converts redux state to props for this component
 function mapStateToProps({ videos, selectedVideo }) {
   return { videos, selectedVideo };
 }
+// tying in the action creators with dispatch
 function mapDispatchToProps(dispatch){
   return bindActionCreators({videoSearch, videoSelect}, dispatch);
 }
-
+//connecting  - basically subscribing
 export default connect(mapStateToProps, mapDispatchToProps)(App);
